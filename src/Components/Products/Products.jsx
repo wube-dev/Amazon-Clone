@@ -28,7 +28,7 @@ function Products()
 
   return (
     <>
-      {isLoading ? (<isLoading />
+      {isLoading ? (<Loader />
       )
         : (
           <section className={classes.product_container}>
