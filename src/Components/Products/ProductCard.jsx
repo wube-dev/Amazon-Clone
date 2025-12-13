@@ -6,7 +6,7 @@ import CurrencyFormat from "../CurrencyFormat/CurrencyFormat";
 import { DataContext } from "../DataProvider/DataProvider";
 import { Type } from "../../Utility/action.type";
 
-function ProductCard({ product, flex, renderDesc }) {
+function ProductCard({ product, flex, renderDesc,renderAdd}) {
   const { image, title, id, rating, price, description } = product;
   const [state, dispatch] = useContext(DataContext)
   const addToCart = () =>
@@ -34,7 +34,7 @@ function ProductCard({ product, flex, renderDesc }) {
 
       <div>
         <h3>{title}</h3>
-        {renderDesc && <div>{ description}</div>}
+        {renderDesc && <div>{description}</div>}
         <div className={classes.rating}>
           <Rating value={rating?.rate || 0} precision={0.1} readOnly />
           <small>{rating?.count || 0}</small>
@@ -43,8 +43,12 @@ function ProductCard({ product, flex, renderDesc }) {
         <div className={classes.card_Prwrapper}>
           <CurrencyFormat amount={price} />
         </div>
-
-        <button className={classes.button} onClick={addToCart}>add to cart</button>
+        {
+          renderAdd && (
+          <button className={classes.button} onClick={addToCart}>
+            add to cart
+          </button>
+        )}
       </div>
     </div>
   );

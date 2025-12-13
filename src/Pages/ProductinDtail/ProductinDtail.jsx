@@ -32,7 +32,9 @@ function ProductinDtail()
     <LayOut>
       {isLoading ? <Loader /> : <Productcard product={product}
         flex={true}
-        renderDesc={true} />}
+        renderDesc={true}
+       renderAdd={true}
+      />}
     </LayOut>
   );
 }
