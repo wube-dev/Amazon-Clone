@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import { CiShoppingCart } from "react-icons/ci";
-import { } from "react-icons/fa";
+import {} from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { auth } from "../../Utility/firebase";
 import clases from "./Header.module.css";
 import { BiCart } from "react-icons/bi";
 import { SlLocationPin } from "react-icons/sl";
 import LowerHeader from "./LowerHeader";
 import { DataContext } from "../DataProvider/DataProvider";
 
-const Header = () =>
-{
-  const [{ basket },state, dispatch] = useContext(DataContext);
-  const totaItem = basket?.reduce((amount, item)=>{
-    return item.amount + amount
-  },0)
+const Header = () => {
+  const [{ user, basket }, state, dispatch] = useContext(DataContext);
+  const totaItem = basket?.reduce((amount, item) => {
+    return item.amount + amount;
+  }, 0);
   return (
     <>
       <section className={clases.fixed}>
@@ -55,10 +55,22 @@ const Header = () =>
                   <option value="">EN</option>
                 </select>
               </Link>
-              <Link to="/auth">
+              <Link to={!user && "/auth"}>
                 <div>
-                  <p> Sign in</p>
-                  <span>Account & Lists</span>
+                  {user ? (
+                    <>
+                      <p>
+                        Hello <br />
+                        {user?.email?.split("@")[0]}
+                      </p>
+                      <span onClick={() => { auth.signOut() }}>sign Out</span>
+                    </>
+                  ) : (
+                    <>
+                      <p> Sign In</p>
+                      <span>Account & Lists</span>
+                    </>
+                  )}
                 </div>
               </Link>
               <Link to="/orders">

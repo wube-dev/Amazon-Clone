@@ -81,7 +81,7 @@ function Cart() {
               <input type="checkbox" />
               <small> this orde contain a gift </small>
             </span>
-            <Link>Continue to checkout</Link>
+            <Link to={"/payments"}>Continue to checkout</Link>
           </div>
         )}
       </section>
