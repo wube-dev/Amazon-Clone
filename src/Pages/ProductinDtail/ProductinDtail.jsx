@@ -3,7 +3,7 @@ import './ProductinDtail.module.css'
 import LayOut from "../../Components/LayOut/LayOut";
 import { useParams } from 'react-router-dom';
 import axios from 'axios'
-import {productUrl} from "../../Api/endPoints";
+import {productUrl} from "../../api/endPoints";
 import Productcard from '../../Components/Products/ProductCard'
 import Loader from "../../Components/Loader/Loader";  // adjust path
 
